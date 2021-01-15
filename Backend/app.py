@@ -1,4 +1,5 @@
 from RPi import GPIO
+from flask import Flask
 import paho.mqtt.client as mqtt
 import json
 import urllib.request
@@ -8,9 +9,20 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return "hello"
+
+@app.route("/sendmessage")
+def flasksendmessage():
+    sendMessage()
+    return "Sent message."
+
 def sendMessage():
-    message = {"status": True, "game_ended": False}
-    client.publish('unit1/output', json.dumps(message))
+    message = {"status": False, "game_ended": False}
+    client.publish('unit1/multiplayer/output', json.dumps(message))
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
@@ -32,14 +44,6 @@ if __name__ == '__main__':
     client.loop_start()
     sendMessage()
 
-try:
-    while True:
-        print("Script started")
-        time.sleep(5)
 
-except KeyboardInterrupt as e:
-    print(e)
-
-finally:
-    GPIO.cleanup()
-    print("Script has stopped!!!")
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
