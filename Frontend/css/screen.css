@@ -454,6 +454,34 @@ input::placeholder {
   */
 
 .c-app {
+  position: relative;
+}
+
+/*
+      Component: Footer
+      ---
+      Global footer component
+  */
+
+.c-footer{
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.c-footer-wideimg {
+  display: none;
+}
+
+@media (min-width:767px) {
+  .c-footer-smallimg {
+    display: none;
+  }
+  .c-footer-wideimg {
+    display: block !important;
+  }
 }
 
 /*
