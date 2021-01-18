@@ -382,7 +382,7 @@ input::placeholder {
   margin-left: 10px;
   border-radius: var(--button-borderRadius, var(--global-borderRadius));
   border: 1px solid var(--global-color-alpha);
-  background-color: var(--color-dark-variant2);
+  background-color: var(--global-color-dark-l);
   color: #fff;
   padding: 12px var(--global-whitespace-md);
   line-height: calc(var(--global-baseline) * 3);
