@@ -4,8 +4,8 @@
 
 @font-face {
   font-family: 'snesitalic';
-  src: url('snesitalic-1g9be-webfont.woff2') format('woff2'),
-       url('snesitalic-1g9be-webfont.woff') format('woff');
+  src: url('../fonts/snesitalic-1g9be-webfont.woff2') format('woff2'),
+       url('../fonts/snesitalic-1g9be-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
@@ -112,6 +112,11 @@ html {
   transition-property: color, background-color;
   transition-duration: calc(var(--transition-duration) / 2);
   transition-timing-function: var(--transition-easing);
+}
+
+body {
+  margin: 0;
+  padding: 0;
 }
 
 *,
@@ -462,8 +467,9 @@ input::placeholder {
   display: flex;
   position: absolute;
   bottom: 0;
-  margin-left: -10px;
-  margin-right: -10px;
+  margin: 0;
+  overflow-x:hidden;
+  overflow-y:hidden;
 }
 
 .c-footer-wideimg {
