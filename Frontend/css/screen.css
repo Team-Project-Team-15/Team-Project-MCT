@@ -5,10 +5,9 @@
 @font-face {
   font-family: 'snesitalic';
   src: url('../fonts/snesitalic-1g9be-webfont.woff2') format('woff2'),
-       url('../fonts/snesitalic-1g9be-webfont.woff') format('woff');
+    url('../fonts/snesitalic-1g9be-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-
 }
 
 /*------------------------------------*\
@@ -40,8 +39,10 @@
   /* opacity */
   --muted-opacity: 0.6;
   /* Shadows */
-  --global-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.025), 0 2px 6px rgba(0, 0, 0, 0.05);
-  --global-box-shadow-lg: 0 0 0 1px rgba(0, 0, 0, 0.025), 0 2px 10px rgba(0, 0, 0, 0.1);
+  --global-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.025),
+    0 2px 6px rgba(0, 0, 0, 0.05);
+  --global-box-shadow-lg: 0 0 0 1px rgba(0, 0, 0, 0.025),
+    0 2px 10px rgba(0, 0, 0, 0.1);
   --global-input-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
   --global-input-focus-shadow: 0 0 5px var(--global-color-alpha-light);
   /* radius */
@@ -387,7 +388,8 @@ input::placeholder {
   line-height: calc(var(--global-baseline) * 3);
   width: 200px;
   outline: none;
-  transition: all var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
+  transition: all var(--global-transitionDuration-alpha)
+    var(--global-transitionEasing-out);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
@@ -432,7 +434,7 @@ input::placeholder {
   line-height: 20px;
 }
 
-.c-title--left{
+.c-title--left {
   text-align: start !important;
 }
 /*
@@ -455,7 +457,6 @@ input::placeholder {
 
 .c-app {
   position: relative;
-
 }
 
 /*
@@ -464,20 +465,20 @@ input::placeholder {
       Global footer component
   */
 
-.c-footer{
+.c-footer {
   display: flex;
   position: absolute;
   bottom: 0;
   margin: 0;
-  overflow-x:hidden;
-  overflow-y:hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .c-footer-wideimg {
   display: none;
 }
 
-@media (min-width:767px) {
+@media (min-width: 767px) {
   .c-footer-smallimg {
     display: none;
   }
@@ -507,31 +508,44 @@ input::placeholder {
 
 .c-input {
   width: 100%;
-  --input-transition: all var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
+  --input-transition: all var(--global-transitionDuration-alpha)
+    var(--global-transitionEasing-out);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   border-radius: var(--input-borderRadius, var(--global-borderRadius));
-  border: var(--input-borderWidth, var(--global-borderWidth)) solid var(--input-borderColor, var(--global-input-borderColor));
-  background-color: var(--input-backgroundColor, var(--global-input-backgroundColor));
+  border: var(--input-borderWidth, var(--global-borderWidth)) solid
+    var(--input-borderColor, var(--global-input-borderColor));
+  background-color: var(
+    --input-backgroundColor,
+    var(--global-input-backgroundColor)
+  );
   color: var(--global-input-color);
   font-family: inherit;
   font-size: 16px;
   line-height: calc(var(--global-baseline) * 3);
-  padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-md);
+  padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth))
+    var(--global-whitespace-md);
   outline: none;
   transition: var(--input-transition);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .c-input:hover {
-  border-color: var(--input-hover-borderColor, var(--global-input-hover-borderColor));
+  border-color: var(
+    --input-hover-borderColor,
+    var(--global-input-hover-borderColor)
+  );
 }
 
 .c-input:focus,
 .c-input:active {
-  border-color: var(--input-focus-borderColor, var(--global-input-focus-borderColor));
-  box-shadow: var(--global-input-focus-boxShadowSpread) var(--input-focus-boxShadowColor, var(--global-input-focus-boxShadowColor));
+  border-color: var(
+    --input-focus-borderColor,
+    var(--global-input-focus-borderColor)
+  );
+  box-shadow: var(--global-input-focus-boxShadowSpread)
+    var(--input-focus-boxShadowColor, var(--global-input-focus-boxShadowColor));
 }
 
 .c-error-message {
@@ -549,53 +563,72 @@ input::placeholder {
       Class to put on all form labels
 */
 
-  .c-label{
-    font-family: 'snesitalic';
-    font-size: 32px;
-    text-align: start;
-  }
+.c-label {
+  font-family: 'snesitalic';
+  font-size: 32px;
+  text-align: start;
+}
 
 /*
       Component: Level
 */
 
-  .c-level {
-    font-family: 'snesitalic';
-    font-size: 42px;
-    background-color: #1A1A1A;
-    line-height: 16px;
-    padding: 24px;
-    width: 8em;
-    background: linear-gradient(to right, rgba(26, 26, 26, 0) 0%, rgba(26, 26, 26,1) 40%, rgba(26, 26, 26,1) 60%, rgba(26, 26, 26,0) 100%);
-  }
+.c-level {
+  font-family: 'snesitalic';
+  font-size: 42px;
+  background-color: #1a1a1a;
+  line-height: 16px;
+  padding: 24px;
+  width: 8em;
+  background: linear-gradient(
+    to right,
+    rgba(26, 26, 26, 0) 0%,
+    rgba(26, 26, 26, 1) 40%,
+    rgba(26, 26, 26, 1) 60%,
+    rgba(26, 26, 26, 0) 100%
+  );
+}
 
 /*
       Component: Timer
 */
 
-  .c-timer {
-    width: 100%;
-    position: relative;
-  }
+.c-timer {
+  width: 100%;
+  position: relative;
+}
 
-  .c-timer-background {
-    background: #262525;
-    width: 248px;
-    height: 248px;
-    border-radius: 50%;
-    display: inline-block;
-  }
+.c-timer-background {
+  background: #262525;
+  width: 248px;
+  height: 248px;
+  border-radius: 50%;
+  display: inline-block;
+}
 
-  .c-timer-text {
-    font-family: protipo, sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 32px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.c-timer-text {
+  font-family: protipo, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 32px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rotate-timer {
+  animation: rotation 60s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(359deg);
+  }
+}
 
 /*------------------------------------*\
   #States
@@ -811,11 +844,9 @@ input::placeholder {
   */
 
 @media screen and (min-width: 32em) {
-
 }
 
 @media screen and (min-width: 60em) {
-
 }
 
 /* Medium devices (tablets, 768px and up)
