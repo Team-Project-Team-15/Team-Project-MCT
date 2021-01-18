@@ -28,7 +28,8 @@
   --color-front: white;
   --color-back: var(--global-color-dark);
 
-  --global-color-dark: #262525;
+  --global-color-dark: #303030;
+  --global-color-dark-l: #262525;
   --global-color-p1: #46ff03;
   --global-color-p2: #03ffff;
   --global-color-error: #ff0303;
@@ -546,12 +547,54 @@ input::placeholder {
       Component: Label
       ---
       Class to put on all form labels
-  */
+*/
 
   .c-label{
     font-family: 'snesitalic';
     font-size: 32px;
     text-align: start;
+  }
+
+/*
+      Component: Level
+*/
+
+  .c-level {
+    font-family: 'snesitalic';
+    font-size: 42px;
+    background-color: #1A1A1A;
+    line-height: 16px;
+    padding: 24px;
+    width: 8em;
+    background: linear-gradient(to right, rgba(26, 26, 26, 0) 0%, rgba(26, 26, 26,1) 40%, rgba(26, 26, 26,1) 60%, rgba(26, 26, 26,0) 100%);
+  }
+
+/*
+      Component: Timer
+*/
+
+  .c-timer {
+    width: 100%;
+    position: relative;
+  }
+
+  .c-timer-background {
+    background: #262525;
+    width: 248px;
+    height: 248px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .c-timer-text {
+    font-family: protipo, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
 /*------------------------------------*\
