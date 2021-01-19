@@ -482,6 +482,7 @@ input::placeholder {
 .c-remaining{
   font-size: 32px;
   font-weight: 600;
+  margin: 0;
 }
 
 .c-nextLevel{
@@ -832,6 +833,14 @@ input::placeholder {
 
 .u-margin-bot-sm {
   margin-bottom: 12px;
+}
+
+.u-margin-bot-md {
+  margin-bottom: 40px;
+}
+
+.u-margin-bot-lg {
+  margin-bottom: 60px;
 }
 
 .u-margin-top-sm {
