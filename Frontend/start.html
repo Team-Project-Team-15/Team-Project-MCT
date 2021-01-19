@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="css/screen.css">
     <link rel="stylesheet" href="https://use.typekit.net/sfs5ute.css">
 
+    <script type="text/javascript" src="src/paho-mqtt.js"></script>
     <script type="text/javascript" src="script/mqtt.js"></script>
-    <script type="text/javascript" src="paho.javascript-1.0.3/paho-mqtt.js"></script>
 
 </head>
 <body>
@@ -17,13 +17,13 @@
         <div class="o-container c-title">
             <p class="c-level">LEVEL 1</p>
         </div>
-        <div class="o-container c-timer">
-            <label class="c-timer-text" for="input-name">START</label>
+        <div class="o-container c-timer js-timer">
+            <label class="c-timer-text js-timer-text" for="input-name">START</label>
             <span class="c-timer-background">
-                <svg class="rotate-timer" viewBox="0 0 100 100">
+                <svg id="timerRotation" viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="44" pathLength="300" stroke-dasharray="1, 0.5" fill="transparent" stroke="white" stroke-width="3"/>
                     <circle cx="50" cy="50" r="41.5" pathLength="300" stroke-dasharray="1, 0.5" fill="transparent" stroke="#434343" stroke-width="2"/>
-                    <rect x="50" stroke="#000" canvas-opacity="1" id="svg_1" height="1" width="3" stroke-width="0" fill="white"/>
+                    <rect x="49" stroke="#000" canvas-opacity="1" id="svg_1" height="1" width="3" stroke-width="0" fill="white"/>
                 </svg>
             </span>
         </div>
