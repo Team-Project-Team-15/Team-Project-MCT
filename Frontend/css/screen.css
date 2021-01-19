@@ -307,9 +307,15 @@ input::placeholder {
 .o-container {
   margin-left: auto;
   margin-right: auto;
-  max-width: 16em;
+  max-width:20em;
   width: 65%;
   text-align: center;
+}
+
+@media (min-width: 767px) {
+  .o-container{
+    max-width:25em;
+  }
 }
 
 /*
@@ -518,7 +524,18 @@ input::placeholder {
   background: radial-gradient(circle, rgba(48,48,48,1) 0%, rgba(26,26,26,1) 100%, rgba(26,26,26,1) 100%, rgba(48,48,48,1) 100%);
   
 }
+/*
+      Component: App
+      ---
+      Global app component
+  */
 
+.c-header{
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
 
 
 /*
@@ -558,6 +575,49 @@ input::placeholder {
   .c-footer-wideimg {
     display: block !important;
   }
+}
+
+/*
+      Component: Icon
+      ---
+      Global icon component
+  */
+
+
+.c-icon{
+  margin: 0;
+}
+
+.c-icon--input{
+  display: flex;
+  margin-left: auto;
+  margin-right: -20px;
+}
+
+/*
+      Component: Icon
+      ---
+      Global icon component
+  */
+
+.c-leaderboard
+{
+  
+  width: 100%;
+  border-radius: var(--input-borderRadius, var(--global-borderRadius));
+  border: var(--input-borderWidth, var(--global-borderWidth)) solid
+    var(--input-borderColor, var(--global-input-borderColor));
+  background-color: var(
+    --input-backgroundColor,
+    var(--global-input-backgroundColor)
+  );
+  font-size: 16px;
+  line-height: calc(var(--global-baseline) * 3);
+  padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth))
+    var(--global-whitespace-md);
+  outline: none;
+  transition: var(--input-transition);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 /*
@@ -629,7 +689,6 @@ input::placeholder {
   margin-bottom: 5px;
   margin-top: 0;
 }
-
 /*
       Component: Label
       ---
@@ -647,6 +706,8 @@ input::placeholder {
 */
 
 .c-level {
+  margin-left: auto;
+  margin-right: auto;
   font-family: 'snesitalic';
   font-size: 42px;
   background-color: #1a1a1a;
@@ -660,6 +721,19 @@ input::placeholder {
     rgba(26, 26, 26, 1) 60%,
     rgba(26, 26, 26, 0) 100%
   );
+}
+
+/*
+      Component: Table
+*/
+
+.c-table{
+  font-size: 16px;
+  width: 100%;
+}
+
+.c-table tr{
+  line-height: 44px;
 }
 
 /*
@@ -845,6 +919,10 @@ input::placeholder {
 
 .u-margin-top-sm {
   margin-top: 12px;
+}
+
+.u-margin-top-md {
+  margin-top: 20px;
 }
 
 .u-padding-right-lg {
