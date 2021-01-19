@@ -1,5 +1,4 @@
 from RPi import GPIO
-from flask import Flask
 import paho.mqtt.client as mqtt
 import json
 import urllib.request
@@ -9,27 +8,20 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
-app = Flask(__name__)
-
 espTopics = ['unit1/output', 'unit2/output']
 espMultiplayerTopics = ['unit1/multiplayer/output', 'unit2/multiplayer/output']
 messageReceived = False
-
-@app.route("/")
-def index():
-    return "Hello"
-
-@app.route("/start")
-def start():
-    startGame()
-    return "Game ended"
+start_game = False
+inProgress = False
 
 def startGame():
     global messageReceived
+    global start_game
+    global inProgress
+    inProgress = True
     randomTopic = random.choice(espTopics)
     sendMessage(True, False, randomTopic)
     level = 0
-    levelTime = 90
     print("Game started")
     while True:
         if messageReceived == True:
@@ -40,20 +32,16 @@ def startGame():
             time.sleep(5)
             randomTopic = random.choice(espTopics)
             sendMessage(True, False, randomTopic)
-            levelTime = 90
             messageReceived = False
             print(f"level {level + 1} started")
             continue
 
-        if levelTime == 0:
+        if start_game == False:
             print("level failed!")
+            inProgress = False
             for topic in espTopics:
                 sendMessage(False, True, topic)
             break
-
-        print(levelTime)
-        levelTime -= 1
-        time.sleep(1)
 
 def sendMessage(status, game_ended, topic):
     message = {"status": status, "game_ended": game_ended}
@@ -63,9 +51,16 @@ def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
 
 def on_message(client, userdata, msg):
-    global messageReceived
     print(msg.topic+" "+str(msg.payload))
-    messageReceived = True
+    if msg.topic == "pi/startgame":
+        obj = json.loads(str(msg.payload,"UTF8"))
+        global start_game
+        start_game = obj['start_game']
+
+    elif msg.topic == "pi/output":
+        global messageReceived
+        messageReceived = True
+
     #obj = json.loads(str(msg.payload,"UTF8"))
     #global isFreeParkingEnabled
     #isFreeParkingEnabled = obj['isFreeParkingEnabled']
@@ -77,5 +72,9 @@ if __name__ == '__main__':
     client.on_message = on_message
     client.connect("192.168.4.1", 1883, 60)
     client.subscribe("pi/output")
+    client.subscribe("pi/startgame")
     client.loop_start()
-    app.run(host='192.168.4.1', port=5000)
+
+    while True:
+        if start_game == True and inProgress == False:
+            startGame()
