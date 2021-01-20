@@ -23,6 +23,8 @@ const int ledGroen3 = 27;
 const int ledRood = 32;
 const int knop = 33;
 
+int timeBeep = 20000;
+
 bool status = false;
 bool multiplayerStatus = false;
 bool game_ended = false;
@@ -222,10 +224,12 @@ void loop() {
   if(!knopStatus == 1 && status == true) {
     status = false;
     client.publish("pi/output", "{\"id\": unit2, \"button_pressed\": true}");
+    delay(1000);
   }
 
   if(!knopStatus == 1 && multiplayerStatus == true) {
     multiplayerStatus = false;
     client.publish("pi/output", "{\"id\": unit2, \"button_pressed\": true}");
+    delay(1000);
   }
 }

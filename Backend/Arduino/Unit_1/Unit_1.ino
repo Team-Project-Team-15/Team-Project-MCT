@@ -224,10 +224,12 @@ void loop() {
   if(!knopStatus == 1 && status == true) {
     status = false;
     client.publish("pi/output", "{\"id\": unit1, \"button_pressed\": true}");
+    delay(1000);
   }
 
   if(!knopStatus == 1 && multiplayerStatus == true) {
     multiplayerStatus = false;
     client.publish("pi/output", "{\"id\": unit1, \"button_pressed\": true}");
+    delay(1000);
   }
 }
