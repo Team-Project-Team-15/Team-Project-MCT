@@ -22,18 +22,29 @@ def startGame():
     randomTopic = random.choice(espTopics)
     sendMessage(True, False, randomTopic)
     level = 0
+    levelLength = 1
+    timesPressed = 0
     print("Game started")
     while True:
         if messageReceived == True:
             sendMessage(False, False, randomTopic)
-            level += 1
-            print(f"level {level} completed")
-            print("Waiting for next level to start..")
-            time.sleep(5)
+            timesPressed += 1
             randomTopic = random.choice(espTopics)
             sendMessage(True, False, randomTopic)
+            print(f"test")
+            if timesPressed == levelLength:
+                levelLength += 1
+                timesPressed = 0
+                level += 1
+                sendMessage(False, False, randomTopic)
+                sendMessageWebApp(level, True, "webapp/output")
+                print(f"level {level} completed")
+                print(f"waiting for next level to start..")
+                time.sleep(7)
+                randomTopic = random.choice(espTopics)
+                sendMessage(True, False, randomTopic)
+                print(f"level {level + 1} started")
             messageReceived = False
-            print(f"level {level + 1} started")
             continue
 
         if start_game == False:
@@ -41,10 +52,15 @@ def startGame():
             inProgress = False
             for topic in espTopics:
                 sendMessage(False, True, topic)
+            sendMessageWebApp(level, False, "webapp/output")
             break
 
 def sendMessage(status, game_ended, topic):
     message = {"status": status, "game_ended": game_ended}
+    client.publish(topic, json.dumps(message))
+
+def sendMessageWebApp(level, completed, topic):
+    message = {"level": level, "completed": completed}
     client.publish(topic, json.dumps(message))
 
 def on_connect(client, userdata, flags, rc):
