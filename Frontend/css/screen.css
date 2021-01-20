@@ -589,7 +589,6 @@ input::placeholder {
 }
 
 .c-icon--input{
-  display: flex;
   margin-left: auto;
   margin-right: -20px;
 }
@@ -602,7 +601,6 @@ input::placeholder {
 
 .c-leaderboard
 {
-  
   width: 100%;
   border-radius: var(--input-borderRadius, var(--global-borderRadius));
   border: var(--input-borderWidth, var(--global-borderWidth)) solid
@@ -689,6 +687,8 @@ input::placeholder {
   margin-bottom: 5px;
   margin-top: 0;
 }
+
+
 /*
       Component: Label
       ---
