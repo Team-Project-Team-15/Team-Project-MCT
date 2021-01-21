@@ -5,8 +5,10 @@ import urllib.request
 import sys
 import random
 import time
+from Repositories.DataRepository import DataRepository
 
 GPIO.setmode(GPIO.BCM)
+
 
 espTopics = ['unit1/output', 'unit2/output']
 espMultiplayerTopics = ['unit1/multiplayer/output', 'unit2/multiplayer/output']
@@ -77,6 +79,11 @@ def on_message(client, userdata, msg):
         global messageReceived
         messageReceived = True
 
+    elif msg.topic == "database/output":
+        data = DataRepository.read_data()
+        client.publish("webapp/output/database", json.dumps(data))
+        
+
     #obj = json.loads(str(msg.payload,"UTF8"))
     #global isFreeParkingEnabled
     #isFreeParkingEnabled = obj['isFreeParkingEnabled']
@@ -89,8 +96,14 @@ if __name__ == '__main__':
     client.connect("192.168.4.1", 1883, 60)
     client.subscribe("pi/output")
     client.subscribe("pi/startgame")
+    client.subscribe("database/output")
     client.loop_start()
 
-    while True:
-        if start_game == True and inProgress == False:
-            startGame()
+    try:
+        while True:
+            if start_game == True and inProgress == False:
+                startGame()
+
+    except KeyboardInterrupt:
+        print('quit')
+        GPIO.cleanup()
