@@ -2,6 +2,7 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
+#include <Bounce2.h>
 
 // Replace the next variables with your SSID/Password combination
 const char* ssid = "TheFloorIsLava";
@@ -23,7 +24,7 @@ const int ledGroen3 = 27;
 const int ledRood = 32;
 const int knop = 33;
 
-int timeBeep = 20000;
+Button button = Button();
 
 bool status = false;
 bool multiplayerStatus = false;
@@ -45,6 +46,10 @@ void setup() {
   client.setServer(mqtt_server, 1883);
   client.setCallback(callback);
 
+  button.attach(knop, INPUT);
+  button.interval(25);
+  button.setPressedState(LOW);
+
   pinMode(ledBlauw1, OUTPUT);
   pinMode(ledBlauw2, OUTPUT);
   pinMode(ledBlauw3, OUTPUT);
@@ -52,7 +57,6 @@ void setup() {
   pinMode(ledGroen2, OUTPUT);
   pinMode(ledGroen3, OUTPUT);
   pinMode(ledRood, OUTPUT);
-  pinMode(knop, INPUT_PULLUP);
 }
 
 void setup_wifi() {
@@ -137,7 +141,7 @@ void reconnect() {
   }
 }
 void loop() {
-  int knopStatus = digitalRead(knop);
+  button.update();
   
   if (!client.connected()) {
     reconnect();
@@ -221,15 +225,13 @@ void loop() {
     analogWrite(ledRood, 0);
   }
 
-  if(!knopStatus == 1 && status == true) {
+  if(button.pressed() && status == true) {
     status = false;
     client.publish("pi/output", "{\"id\": unit2, \"button_pressed\": true}");
-    delay(1000);
   }
 
-  if(!knopStatus == 1 && multiplayerStatus == true) {
+  if(button.pressed() && multiplayerStatus == true) {
     multiplayerStatus = false;
     client.publish("pi/output", "{\"id\": unit2, \"button_pressed\": true}");
-    delay(1000);
   }
 }
