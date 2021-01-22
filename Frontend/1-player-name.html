@@ -7,6 +7,8 @@
 
     <link rel="stylesheet" href="css/screen.css">
 
+    <script type="text/javascript" src="script/player-name.js"></script>
+
 </head>
 <body>
     <main class="c-app">
@@ -14,15 +16,16 @@
             <p class="c-title-top">1 PLAYER</p>
         </div>
         <div class="o-container">
-            <div class="c-form">
+            <div class="c-form js-name-field">
                 <div class="">
                     <label class="c-label" for="input-name">NAME</label>
                 </div>
                 <div class="">
-                    <input class="c-input" type="text" >
+                    <span class="c-label-error js-name-error" style="display: none;">This field is required.</span>
+                    <input class="c-input js-name-input" type="text" >
                 </div>
                 <div class="c-form-field">
-                    <button class="c-button c-button-alt">CONTINUE</button>
+                    <button class="c-button c-button-alt js-continue-button">CONTINUE</button>
                 </div>
             </div>
         </div>

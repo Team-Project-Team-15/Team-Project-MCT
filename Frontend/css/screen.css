@@ -119,6 +119,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  margin-bottom: 100px;
 }
 
 *,
@@ -257,6 +258,7 @@ a {
   outline-color: var(--global-color-beta);
   outline-width: medium;
   outline-offset: 2px;
+  text-decoration: none;
 }
 
 a:visited,
@@ -307,14 +309,14 @@ input::placeholder {
 .o-container {
   margin-left: auto;
   margin-right: auto;
-  max-width:20em;
+  max-width: 20em;
   width: 65%;
   text-align: center;
 }
 
 @media (min-width: 767px) {
-  .o-container{
-    max-width:25em;
+  .o-container {
+    max-width: 25em;
   }
 }
 
@@ -423,7 +425,7 @@ input::placeholder {
   justify-content: flex-end;
 }
 
-.c-button-contained{
+.c-button-contained {
   margin: 0 0 0 0;
   width: 100px;
   height: 49px;
@@ -431,15 +433,14 @@ input::placeholder {
   color: black;
 }
 
-.c-text-contained{
+.c-text-contained {
   width: 94px;
   font-family: 'snesitalic';
   font-size: 37px;
   margin-top: 13px;
 }
 
-.c-extButtonHolder
-{
+.c-extButtonHolder {
   height: 50px;
   width: 188px;
   display: flex;
@@ -447,7 +448,6 @@ input::placeholder {
   line-height: calc(var(--global-baseline) * 3);
   border-radius: var(--button-borderRadius, var(--global-borderRadius));
   border: 1px solid var(--global-color-alpha);
-
 }
 /*
       Component: Title
@@ -477,7 +477,7 @@ input::placeholder {
   text-align: start !important;
 }
 
-.c-title--alt{
+.c-title--alt {
   font-size: 62px;
   margin-top: 40px;
   color: var(--global-color-alpha);
@@ -485,13 +485,13 @@ input::placeholder {
   margin-bottom: 0px;
 }
 
-.c-remaining{
+.c-remaining {
   font-size: 32px;
   font-weight: 600;
   margin: 0;
 }
 
-.c-nextLevel{
+.c-nextLevel {
   font-size: 16px;
   font-weight: 600;
   margin-top: 100px;
@@ -517,12 +517,17 @@ input::placeholder {
     Everything form related here
 */
 
-.c-gradient-banner{
+.c-gradient-banner {
   min-width: 100vh;
   height: 300px;
-  background: rgb(48,48,48);
-  background: radial-gradient(circle, rgba(48,48,48,1) 0%, rgba(26,26,26,1) 100%, rgba(26,26,26,1) 100%, rgba(48,48,48,1) 100%);
-  
+  background: rgb(48, 48, 48);
+  background: radial-gradient(
+    circle,
+    rgba(48, 48, 48, 1) 0%,
+    rgba(26, 26, 26, 1) 100%,
+    rgba(26, 26, 26, 1) 100%,
+    rgba(48, 48, 48, 1) 100%
+  );
 }
 /*
       Component: App
@@ -530,13 +535,12 @@ input::placeholder {
       Global app component
   */
 
-.c-header{
+.c-header {
   width: 100%;
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
 }
-
 
 /*
       Component: App
@@ -557,11 +561,10 @@ input::placeholder {
 
 .c-footer {
   display: flex;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   margin: 0;
   overflow-x: hidden;
-  overflow-y: hidden;
 }
 
 .c-footer-wideimg {
@@ -583,12 +586,11 @@ input::placeholder {
       Global icon component
   */
 
-
-.c-icon{
+.c-icon {
   margin: 0;
 }
 
-.c-icon--input{
+.c-icon--input {
   margin-left: auto;
   margin-right: -20px;
 }
@@ -599,8 +601,7 @@ input::placeholder {
       Global icon component
   */
 
-.c-leaderboard
-{
+.c-leaderboard {
   width: 100%;
   border-radius: var(--input-borderRadius, var(--global-borderRadius));
   border: var(--input-borderWidth, var(--global-borderWidth)) solid
@@ -616,6 +617,8 @@ input::placeholder {
   outline: none;
   transition: var(--input-transition);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  overflow: scroll;
+  height: 320px;
 }
 
 /*
@@ -688,7 +691,6 @@ input::placeholder {
   margin-top: 0;
 }
 
-
 /*
       Component: Label
       ---
@@ -699,6 +701,12 @@ input::placeholder {
   font-family: 'snesitalic';
   font-size: 32px;
   text-align: start;
+}
+
+.c-label-error {
+  display: flex;
+  align-self: flex-start;
+  color: var(--global-color-error);
 }
 
 /*
@@ -727,12 +735,12 @@ input::placeholder {
       Component: Table
 */
 
-.c-table{
+.c-table {
   font-size: 16px;
   width: 100%;
 }
 
-.c-table tr{
+.c-table tr {
   line-height: 44px;
 }
 

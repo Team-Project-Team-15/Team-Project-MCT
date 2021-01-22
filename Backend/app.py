@@ -1,4 +1,4 @@
-from RPi import GPIO
+import RPi.GPIO as GPIO
 import paho.mqtt.client as mqtt
 import json
 import urllib.request
@@ -8,7 +8,6 @@ import time
 from Repositories.DataRepository import DataRepository
 
 GPIO.setmode(GPIO.BCM)
-
 
 espTopics = ['unit1/output', 'unit2/output']
 espMultiplayerTopics = ['unit1/multiplayer/output', 'unit2/multiplayer/output']
@@ -33,7 +32,6 @@ def startGame():
             timesPressed += 1
             randomTopic = random.choice(espTopics)
             sendMessage(True, False, randomTopic)
-            print(f"test")
             if timesPressed == levelLength:
                 levelLength += 1
                 timesPressed = 0
@@ -79,9 +77,17 @@ def on_message(client, userdata, msg):
         global messageReceived
         messageReceived = True
 
-    elif msg.topic == "database/output":
+    elif msg.topic == "database/get":
         data = DataRepository.read_data()
         client.publish("webapp/output/database", json.dumps(data))
+
+    elif msg.topic == "database/insert":
+        obj = json.loads(str(msg.payload, "UTF8"))
+        playerName = str(obj['playerName'])
+        score = int(obj['score'])
+        totalTime = str(obj['time'])
+        DataRepository.insert_data(playerName, score, totalTime)
+    
         
 
     #obj = json.loads(str(msg.payload,"UTF8"))
@@ -96,7 +102,8 @@ if __name__ == '__main__':
     client.connect("192.168.4.1", 1883, 60)
     client.subscribe("pi/output")
     client.subscribe("pi/startgame")
-    client.subscribe("database/output")
+    client.subscribe("database/get")
+    client.subscribe("database/insert")
     client.loop_start()
 
     try:

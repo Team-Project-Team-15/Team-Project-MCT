@@ -18,5 +18,5 @@ class DataRepository:
 
     @staticmethod
     def read_data():
-        sql = "SELECT name, score, cast(time as char) as time FROM scoreboard order by time, score desc;"
+        sql = "SELECT name, score, cast(time as char) as time FROM scoreboard order by score desc, time asc;"
         return Database.get_rows(sql)

@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="css/screen.css">
     <link rel="stylesheet" href="https://use.typekit.net/sfs5ute.css">
 
+    <script type="text/javascript" src="src/paho-mqtt.js"></script>
+    <script type="text/javascript" src="script/leaderboard.js"></script>
+
 </head>
 <body>
     <main class="c-app">
@@ -29,8 +32,8 @@
           <input class="c-input" type="text" placeholder="Search">
         </div>
         <div class="o-container c-leaderboard u-margin-top-md">
-            <table class="c-table">
-                <tr>
+            <table class="c-table js-table-leaderboard">
+                <!-- <tr>
                   <td>1</td>
                   <td>Sander</td>
                   <td>LEVEL 6</td>
@@ -53,7 +56,7 @@
                     <td>Aaron</td>
                     <td>LEVEL 1</td>
                     <td>00:00:01</td>
-                  </tr>
+                  </tr> -->
               </table>
         </div>
     </main>
