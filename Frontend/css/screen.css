@@ -32,8 +32,8 @@
   --global-color-p1: #46ff03;
   --global-color-p2: #03ffff;
   --global-color-error: #ff0303;
-  --global-color-alpha-transparent: rgba(255, 154, 3, 0.7);
-  --global-color-alpha-x-transparent: rgba(255, 154, 3, 0.5);
+  --global-color-alpha-transparent: rgba(255, 172, 47, 0.7);
+  --global-color-alpha-x-transparent: rgba(255, 179, 64, 0.5);
   --global-color-error-x-transparant: rgba(255, 3, 3, 0.5);
 
   /* opacity */
@@ -459,8 +459,19 @@ input::placeholder {
   font-family: 'snesitalic';
   color: white;
   text-align: center;
-  margin-top: 60px;
+  margin-top: 30px;
   min-width: fit-content;
+}
+
+@media (min-width: 767px) {
+  .c-title{
+    margin-top: 70px;
+  }
+  .u-margin-bot-lg{
+    margin-bottom: 60px;
+  }
+
+
 }
 
 .c-title-top {
@@ -535,7 +546,9 @@ input::placeholder {
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
+
 
 
 /*
@@ -547,7 +560,10 @@ input::placeholder {
 .c-app {
   position: relative;
   text-align: center;
+  width: 100%;
 }
+
+
 
 /*
       Component: Footer
@@ -576,6 +592,36 @@ input::placeholder {
     display: block !important;
   }
 }
+
+/*
+    Component: Custom Select
+    ---
+    Custom select dropdown
+*/
+
+.c-custom-select {
+  display: block;
+  position: relative;
+  width: 275px;
+  margin-left: 20px;
+}
+
+.c-custom-select__symbol {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  pointer-events: none;
+  fill: var(--global-color-neutral-x-light);
+}
+
+@media (min-width: 767px) {
+  .c-custom-select{
+    width: 205px;
+  }
+}
+
 
 /*
       Component: Icon
@@ -671,10 +717,7 @@ input::placeholder {
 
 .c-input:focus,
 .c-input:active {
-  border-color: var(
-    --input-focus-borderColor,
-    var(--global-input-focus-borderColor)
-  );
+  border-color: var(--global-color-alpha-l);
   box-shadow: var(--global-input-focus-boxShadowSpread)
     var(--input-focus-boxShadowColor, var(--global-input-focus-boxShadowColor));
 }
@@ -688,7 +731,9 @@ input::placeholder {
   margin-top: 0;
 }
 
-
+.c-custom-select__input{
+  padding-left: 25px;
+}
 /*
       Component: Label
       ---
@@ -914,7 +959,7 @@ input::placeholder {
 }
 
 .u-margin-bot-lg {
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 .u-margin-top-sm {
@@ -927,6 +972,13 @@ input::placeholder {
 
 .u-padding-right-lg {
   padding-right: 60px;
+}
+
+
+@media (min-width: 767px) {
+  .u-margin-bot-lg{
+    margin-bottom: 60px;
+  }
 }
 
 /*
