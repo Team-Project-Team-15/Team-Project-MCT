@@ -41,7 +41,7 @@ const start = function() {
 const startAlreadyInProgress = function() {
   if (params.has("inProgress")) {
     timerText.textContent = "00:00";
-    duration = 5;
+    duration = 90;
     var timer = duration, minutes, seconds;
     timerRotation.classList.add("rotate-timer");
       var startTimer = setInterval(() => {
