@@ -89,7 +89,9 @@ client.onMessageArrived = function (message) {
       var totalHours = Math.floor(timeDiff / 3600) % 24;
       var totalMinutes = Math.floor(timeDiff / 60) % 60;
       var totalSeconds = Math.floor(timeDiff % 60);
-      var formattedTime = totalHours + ":" + ("0" + totalMinutes).slice(-2) + ":" + ("0" + totalSeconds).slice(-2);
+      var formattedTime = ("0" + totalHours).slice(-2) + ":" + ("0" + totalMinutes).slice(-2) + ":" + ("0" + totalSeconds).slice(-2);
+      var playerName = localStorage.getItem('playerName');
+      client.publish("database/insert", `{"playerName": "${String(playerName)}", "score": ${parseInt(level)}, "time": "${String(formattedTime)}"}`);
       window.location.replace("result.html?level="+level+"&time="+String(formattedTime));
     }
   }
