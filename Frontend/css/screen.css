@@ -147,6 +147,35 @@ body {
   text-shadow: none;
 }
 
+/*
+  * Custom scrollbar
+*/
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 10px 10px #cc8800;
+  border: solid 3px transparent;
+  border-top: solid 10px transparent;
+  border-bottom: solid 10px transparent;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  box-shadow: inset 0 0 10px 10px #ab7200;
+  border: solid 3px transparent;
+  border-top: solid 10px transparent;
+  border-bottom: solid 10px transparent;
+}
+
 /*------------------------------------*\
   #Elements
   \*------------------------------------*/
@@ -464,14 +493,12 @@ input::placeholder {
 }
 
 @media (min-width: 767px) {
-  .c-title{
+  .c-title {
     margin-top: 70px;
   }
-  .u-margin-bot-lg{
+  .u-margin-bot-lg {
     margin-bottom: 60px;
   }
-
-
 }
 
 .c-title-top {
@@ -554,7 +581,6 @@ input::placeholder {
   align-items: center;
 }
 
-
 /*
       Component: App
       ---
@@ -566,8 +592,6 @@ input::placeholder {
   text-align: center;
   width: 100%;
 }
-
-
 
 /*
       Component: Footer
@@ -620,11 +644,10 @@ input::placeholder {
 }
 
 @media (min-width: 767px) {
-  .c-custom-select{
+  .c-custom-select {
     width: 205px;
   }
 }
-
 
 /*
       Component: Icon
@@ -663,7 +686,7 @@ input::placeholder {
   outline: none;
   transition: var(--input-transition);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  overflow: scroll;
+  overflow-y: scroll;
   height: 320px;
 }
 
@@ -734,7 +757,7 @@ input::placeholder {
   margin-top: 0;
 }
 
-.c-custom-select__input{
+.c-custom-select__input {
   padding-left: 25px;
 }
 
@@ -984,9 +1007,8 @@ input::placeholder {
   padding-right: 60px;
 }
 
-
 @media (min-width: 767px) {
-  .u-margin-bot-lg{
+  .u-margin-bot-lg {
     margin-bottom: 60px;
   }
 }
