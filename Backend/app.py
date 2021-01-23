@@ -8,6 +8,8 @@ import time
 from Repositories.DataRepository import DataRepository
 
 GPIO.setmode(GPIO.BCM)
+PIR_PIN = 23
+GPIO.setup(PIR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 espTopics = ['unit1/output', 'unit2/output']
 espMultiplayerTopics = ['unit1/multiplayer/output', 'unit2/multiplayer/output']
@@ -54,6 +56,9 @@ def startGame():
                 sendMessage(False, True, topic)
             sendMessageWebApp(level, False, "webapp/output")
             break
+
+        if GPIO.input(PIR_PIN):
+            start_game = False
 
 def sendMessage(status, game_ended, topic):
     message = {"status": status, "game_ended": game_ended}

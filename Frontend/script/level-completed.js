@@ -1,7 +1,10 @@
+client = new Paho.MQTT.Client("192.168.4.1", Number(9001), "clientid");
+
 const getDOMElements = function() {
     cooldownTimerHtml = document.querySelector('.js-cooldown-timer');
     levelHtml = document.querySelector('.js-level');
     levelRemainingHtml = document.querySelector('.js-level-remaining');
+    stopBtnHtml = document.querySelector('.js-stop');
     params = (new URL(document.location)).searchParams;
     level = parseInt(params.get('level'));
     minutes = params.get('minutes');
@@ -32,9 +35,37 @@ const cooldown = function() {
     }, 1000);
 }
 
+const stopBtn = function() {
+    stopBtnHtml.addEventListener('click', function() {
+        client.publish("pi/startgame", "{\"start_game\": false}");
+        window.location.replace("index.html");
+    })
+}
+
+client.onConnectionLost = function (responseObject) {
+    console.log("Connection Lost: "+responseObject.errorMessage);
+}
+
+client.onMessageArrived = function (message) {
+  var topic = message.destinationName;
+  var payload = message.payloadString;
+  console.log("Message Arrived: "+payload);
+}
+
+// Called when the connection is made
+function onConnect(){
+  console.log("Connected to Mosquitto Broker.");
+}
+
+// Connect the client, providing an onConnect callback
+client.connect({
+	onSuccess: onConnect
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     console.info('DOM LOADED');
     getDOMElements();
     cooldown();
     drawItems();
+    stopBtn();
   })

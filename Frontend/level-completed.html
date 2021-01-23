@@ -14,6 +14,8 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#00aba9">
     <meta name="theme-color" content="#ffffff">
+  
+    <script type="text/javascript" src="src/paho-mqtt.js"></script>
     <script type="text/javascript" src="script/level-completed.js"></script>
 
 </head>
@@ -29,7 +31,7 @@
         <div>
             <p class="c-nextLevel">Starting next level in</p>
             <div class="c-extButtonHolder">
-                <button class="c-button c-button-contained">STOP</button>
+                <button class="c-button c-button-contained js-stop">STOP</button>
                 <p class="c-text-contained js-cooldown-timer">5...</p>
             </div>
         </div>
