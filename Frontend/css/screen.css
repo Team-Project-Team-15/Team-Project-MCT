@@ -136,13 +136,13 @@ body {
   */
 
 ::-moz-selection {
-  background: var(--color-dark);
+  background: var(--global-color-alpha-xxxl);
   color: white;
   text-shadow: none;
 }
 
 ::selection {
-  background: var(--color-dark);
+  background: var(--global-color-alpha-xxxl);
   color: white;
   text-shadow: none;
 }
@@ -478,6 +478,12 @@ input::placeholder {
   border-radius: var(--button-borderRadius, var(--global-borderRadius));
   border: 1px solid var(--global-color-alpha);
 }
+
+.c-stop-button {
+  margin-top: 21px;
+  display: none;
+}
+
 /*
       Component: Title
       ---
@@ -681,8 +687,7 @@ input::placeholder {
   );
   font-size: 16px;
   line-height: calc(var(--global-baseline) * 3);
-  padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth))
-    var(--global-whitespace-md);
+  padding: 12px;
   outline: none;
   transition: var(--input-transition);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -729,6 +734,7 @@ input::placeholder {
   line-height: calc(var(--global-baseline) * 3);
   padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth))
     var(--global-whitespace-md);
+  padding-left: 16px;
   outline: none;
   transition: var(--input-transition);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -844,6 +850,10 @@ input::placeholder {
 
 .rotate-timer {
   animation: rotation 60s infinite linear;
+}
+
+.disable-timer {
+  pointer-events: none;
 }
 
 @keyframes rotation {

@@ -15,27 +15,29 @@
 <body>
     <main class="c-app">
         <div class="o-container c-header">
-              <svg class="c-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <g id="ic_back_arrow" transform="translate(-16 -40)">
-                  <g id="Group_283" data-name="Group 283" transform="translate(16 40)">
-                    <rect id="Rectangle_155" data-name="Rectangle 155" width="24" height="24" fill="none"/>
-                    <path id="Path_77" data-name="Path 77" d="M20,11H7.8l5.6-5.6L12,4,4,12l8,8,1.4-1.4L7.8,13H20Z" fill="#fff"/>
-                  </g>
+          <a href="index.html">
+            <svg class="c-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <g id="ic_back_arrow" transform="translate(-16 -40)">
+                <g id="Group_283" data-name="Group 283" transform="translate(16 40)">
+                  <rect id="Rectangle_155" data-name="Rectangle 155" width="24" height="24" fill="none"/>
+                  <path id="Path_77" data-name="Path 77" d="M20,11H7.8l5.6-5.6L12,4,4,12l8,8,1.4-1.4L7.8,13H20Z" fill="#fff"/>
                 </g>
-              </svg>
+              </g>
+            </svg>
+          </a>
         </div>
         <div class="o-container c-header u-margin-top-md">
-          <input class="c-input" type="text" placeholder="Search">
+          <input class="c-input js-input-search" type="text" placeholder="Search">
           <span class="c-custom-select">
-            <select class="c-input c-custom-select__input" class="" name="select1" id="select1">
-                <option value="All-levels">All</option>
+            <select class="c-input c-custom-select__input js-dropdown" class="" name="select1" id="select1" onchange="dropdownFilter()">
+                <!-- <option value="All-levels">All</option>
                 <option value="Level-7">level 7</option>
                 <option value="Level6">level 6</option>
                 <option value="Level-5">level 5</option>
                 <option value="Level-4">level 4</option>
                 <option value="Level-3">level 3</option>
                 <option value="Level-2">level 2</option>
-                <option value="Level-1">level 1</option>
+                <option value="Level-1">level 1</option> -->
             </select>
             <svg class="c-custom-select__symbol" id="filter_list-24px" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <path id="Path_97" data-name="Path 97" d="M0,0H24V24H0Z" fill="none"/>

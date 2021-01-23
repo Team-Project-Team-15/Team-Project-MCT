@@ -6,6 +6,7 @@ const getDOMElements = function() {
   timerText = document.querySelector('.js-timer-text');
   timerRotation = document.getElementById('timerRotation');
   levelHtml = document.querySelector('.js-level');
+  stopBtnHtml = document.querySelector('.js-stop');
   params = (new URL(document.location)).searchParams;
   level = params.get('level')
 }
@@ -13,6 +14,8 @@ const getDOMElements = function() {
 const start = function() {
   duration = 90;
   timerHtml.addEventListener('click', function() {
+    timerHtml.classList.toggle('disable-timer');
+    stopBtnHtml.style.display = 'block';
     timeStart = new Date();
     localStorage.setItem("timeStart", timeStart);
     var timer = duration, minutes, seconds;
@@ -40,6 +43,7 @@ const start = function() {
 
 const startAlreadyInProgress = function() {
   if (params.has("inProgress")) {
+    timerHtml.classList.toggle('disable-timer');
     timerText.textContent = "00:00";
     duration = 90;
     var timer = duration, minutes, seconds;
@@ -62,6 +66,13 @@ const startAlreadyInProgress = function() {
         }
       }, 1000);
   }
+}
+
+const stopBtn = function() {
+  stopBtnHtml.addEventListener('click', function() {
+    client.publish("pi/startgame", "{\"start_game\": false}");
+    window.location.replace("index.html");
+  })
 }
 
 client = new Paho.MQTT.Client("192.168.4.1", Number(9001), "clientid");
@@ -91,7 +102,9 @@ client.onMessageArrived = function (message) {
       var totalSeconds = Math.floor(timeDiff % 60);
       var formattedTime = ("0" + totalHours).slice(-2) + ":" + ("0" + totalMinutes).slice(-2) + ":" + ("0" + totalSeconds).slice(-2);
       var playerName = localStorage.getItem('playerName');
-      client.publish("database/insert", `{"playerName": "${String(playerName)}", "score": ${parseInt(level)}, "time": "${String(formattedTime)}"}`);
+      if (level != 0) {
+        client.publish("database/insert", `{"playerName": "${String(playerName)}", "score": ${parseInt(level)}, "time": "${String(formattedTime)}"}`);
+      }
       window.location.replace("result.html?level="+level+"&time="+String(formattedTime));
     }
   }
@@ -113,4 +126,5 @@ document.addEventListener('DOMContentLoaded', function() {
   getDOMElements();
   start();
   startAlreadyInProgress();
+  stopBtn();
 })
