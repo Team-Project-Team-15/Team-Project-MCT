@@ -44,6 +44,7 @@ const start = function() {
 const startAlreadyInProgress = function() {
   if (params.has("inProgress")) {
     timerHtml.classList.toggle('disable-timer');
+    stopBtnHtml.style.display = 'block';
     timerText.textContent = "00:00";
     duration = 90;
     var timer = duration, minutes, seconds;
