@@ -27,7 +27,7 @@ const removeErrors = function(formField, errorField) {
 const enableListeners = function() {
     playerName.input.addEventListener('blur', function() {
         if (isEmpty(playerName.input.value)) {
-            addErrors(playerName.input, playerName.errorMessage, 'This field is required.');
+            addErrors(playerName.input, playerName.errorMessage, 'A name is required.');
         } else {
             if (!isEmpty(playerName.input.value)) {
                 removeErrors(playerName.field, playerName.errorMessage);
