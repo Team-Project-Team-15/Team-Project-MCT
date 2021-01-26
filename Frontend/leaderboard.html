@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Floor Is Lava</title>
+
+    <link rel="stylesheet" href="css/screen.css">
+    <link rel="stylesheet" href="https://use.typekit.net/sfs5ute.css">
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#ffffff">
+    <script type="text/javascript" src="src/paho-mqtt.js"></script>
+    <script type="text/javascript" src="script/leaderboard.js"></script>
+
+</head>
+<body>
+    <main class="c-app">
+        <div class="o-container c-header">
+          <a href="index.html">
+            <svg class="c-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <g id="ic_back_arrow" transform="translate(-16 -40)">
+                <g id="Group_283" data-name="Group 283" transform="translate(16 40)">
+                  <rect id="Rectangle_155" data-name="Rectangle 155" width="24" height="24" fill="none"/>
+                  <path id="Path_77" data-name="Path 77" d="M20,11H7.8l5.6-5.6L12,4,4,12l8,8,1.4-1.4L7.8,13H20Z" fill="#fff"/>
+                </g>
+              </g>
+            </svg>
+          </a>
+        </div>
+        <div class="o-container c-header u-margin-top-md">
+          <input class="c-input js-input-search" type="text" placeholder="Search">
+          <span class="c-custom-select">
+            <select class="c-input c-custom-select__input js-dropdown" class="" name="select1" id="select1" onchange="dropdownFilter()">
+                <!-- <option value="All-levels">All</option>
+                <option value="Level-7">level 7</option>
+                <option value="Level6">level 6</option>
+                <option value="Level-5">level 5</option>
+                <option value="Level-4">level 4</option>
+                <option value="Level-3">level 3</option>
+                <option value="Level-2">level 2</option>
+                <option value="Level-1">level 1</option> -->
+            </select>
+            <svg class="c-custom-select__symbol" id="filter_list-24px" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path id="Path_97" data-name="Path 97" d="M0,0H24V24H0Z" fill="none"/>
+              <path id="Path_98" data-name="Path 98" d="M10,18h4V16H10ZM3,6V8H21V6Zm3,7H18V11H6Z" fill="#fff"/>
+            </svg>
+        </span>
+        </div>
+        <div class="o-container c-leaderboard u-margin-top-md">
+            <table class="c-table js-table-leaderboard">
+                <!-- <tr>
+                  <td>1</td>
+                  <td>Sander</td>
+                  <td>LEVEL 6</td>
+                  <td>00:16:32</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Louis</td>
+                  <td>LEVEL 4</td>
+                  <td>00:15:12</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Tayron</td>
+                    <td>LEVEL 2</td>
+                    <td>00:08:46</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Aaron</td>
+                    <td>LEVEL 1</td>
+                    <td>00:00:01</td>
+                  </tr> -->
+              </table>
+        </div>
+    </main>
+    <div class="c-footer">
+        <img src="img\extended-lava-river.png" alt="" class="c-footer-wideimg">
+        <img src="img\lava-river.png" class="c-footer-smallimg">
+    </div>
+</body>
+</html>

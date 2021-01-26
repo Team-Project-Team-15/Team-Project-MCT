@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Floor Is Lava</title>
+
+    <link rel="stylesheet" href="css/screen.css">
+    <link rel="stylesheet" href="https://use.typekit.net/sfs5ute.css">
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#ffffff">
+    <script type="text/javascript" src="src/paho-mqtt.js"></script>
+    <script type="text/javascript" src="script/mqtt.js"></script>
+    <script type="text/javascript" src="script/start.js"></script>
+  
+</head>
+<body>
+    <main class="c-app">
+        <div class="o-container c-title">
+            <p class="c-level js-level">LEVEL 1</p>
+        </div>
+        <div class="o-container c-timer js-timer">
+            <label class="c-timer-text js-timer-text" for="input-name">START</label>
+            <span class="c-timer-background">
+                <svg id="timerRotation" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="44" pathLength="300" stroke-dasharray="1, 0.5" fill="transparent" stroke="white" stroke-width="3"/>
+                    <circle cx="50" cy="50" r="41.5" pathLength="300" stroke-dasharray="1, 0.5" fill="transparent" stroke="#434343" stroke-width="2"/>
+                    <rect x="49" stroke="#000" canvas-opacity="1" id="svg_1" height="1" width="3" stroke-width="0" fill="white"/>
+                </svg>
+            </span>
+        </div>
+        <div class="o-container c-stop-button js-stop">
+            <button class="c-button c-button-contained">STOP</button>
+        </div>
+    </main>
+    <div class="c-footer">
+        <img src="img\extended-lava-river.png" alt="" class="c-footer-wideimg">
+        <img src="img\lava-river.png" class="c-footer-smallimg">
+    </div>
+</body>
+</html>

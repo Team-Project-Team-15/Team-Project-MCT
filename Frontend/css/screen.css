@@ -1,0 +1,1183 @@
+/*------------------------------------*\
+#FONTS
+\*------------------------------------*/
+
+@font-face {
+  font-family: 'snesitalic';
+  src: url('../fonts/snesitalic-1g9be-webfont.woff2') format('woff2'),
+    url('../fonts/snesitalic-1g9be-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*------------------------------------*\
+#Variables
+\*------------------------------------*/
+
+:root {
+  /* typography */
+  --global-root-font-size: 16;
+  /* colors */
+  --global-color-alpha: #ff9a03;
+  --global-color-alpha-l: #ffaa2c;
+  --global-color-alpha-xl: #ffbe5e;
+  --global-color-alpha-xxl: #ffc978;
+  --global-color-alpha-xxxl: #fed79d;
+
+  --color-front: white;
+  --color-back: var(--global-color-dark);
+
+  --global-color-dark: #303030;
+  --global-color-dark-l: #262525;
+  --global-color-p1: #46ff03;
+  --global-color-p2: #03ffff;
+  --global-color-error: #ff0303;
+  --global-color-alpha-transparent: rgba(255, 172, 47, 0.7);
+  --global-color-alpha-x-transparent: rgba(255, 179, 64, 0.5);
+  --global-color-error-x-transparant: rgba(255, 3, 3, 0.5);
+
+  /* opacity */
+  --muted-opacity: 0.6;
+  /* Shadows */
+  --global-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.025),
+    0 2px 6px rgba(0, 0, 0, 0.05);
+  --global-box-shadow-lg: 0 0 0 1px rgba(0, 0, 0, 0.025),
+    0 2px 10px rgba(0, 0, 0, 0.1);
+  --global-input-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+  --global-input-focus-shadow: 0 0 5px var(--global-color-alpha-light);
+  /* radius */
+  /* border radius */
+  --global-borderRadius: 13px;
+  --global-borderWidth: 1.5px;
+  /* Whitespace */
+  /* 
+          global font-size = 15px
+          baseline = 5px        
+          15px = 1rem
+          5px = 1rem/3
+          This would equal to 0.3333333...rem but let the browser do the math
+      */
+  --global-baseline: calc(1rem / 2);
+  --global-whitespace-xxs: var(--global-baseline);
+  /* = 5px */
+  --global-whitespace-xs: calc(var(--global-baseline) * 2);
+  /* = 10px */
+  --global-whitespace-sm: calc(var(--global-baseline) * 3);
+  /* = 15px */
+  --global-whitespace-md: calc(var(--global-baseline) * 4);
+  /* = 20px */
+  --global-whitespace-lg: calc(var(--global-baseline) * 5);
+  /* = 25px */
+  --global-whitespace-xl: calc(var(--global-baseline) * 6);
+  /* = 30px */
+  /* transitions */
+  --global-transition-alpha: 0.2s;
+  --global-transition-beta: 1s;
+  --global-transitionEasing-out: ease-out;
+  --global-transitionEasing-out-cubic: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --global-transitionDuration-alpha: 0.1s;
+  --global-transitionDuration-beta: 0.2s;
+  --global-transitionDuration-gamma: 0.3s;
+  /* input */
+  --global-placeholder-color: #68635c;
+  --global-input-backgroundColor: var(--global-color-dark);
+  --global-input-color: white;
+  --global-input-borderColor: var(--global-color-alpha-l);
+  --global-input-hover-borderColor: var(--global-color-alpha);
+  --global-input-focus-borderColor: var(--global-color-dark);
+  --global-input-error-borderColor: var(--global-color-error);
+  --global-input-focus-boxShadowSpread: 0 0 0 3px;
+  --global-input-focus-boxShadowColor: var(--global-color-alpha-x-transparent);
+  --global-input-error-boxShadowColor: var(--global-color-error-x-transparent);
+}
+
+/*------------------------------------*\
+  #GENERIC
+  \*------------------------------------*/
+
+/*
+      Generic: Page
+      ---
+      Global page styles + universal box-sizing:
+  */
+
+html {
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: 'Protipo', Helvetica, arial, sans-serif;
+  color: var(--color-front);
+  background-color: var(--color-back);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'zero' 1;
+  transition-property: color, background-color;
+  transition-duration: calc(var(--transition-duration) / 2);
+  transition-timing-function: var(--transition-easing);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 100px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/*
+  * Remove text-shadow in selection highlight:
+  * https://twitter.com/miketaylr/status/12228805301
+  *
+  * Customize the background color to match your design.
+  */
+
+::-moz-selection {
+  background: var(--global-color-alpha-xxxl);
+  color: white;
+  text-shadow: none;
+}
+
+::selection {
+  background: var(--global-color-alpha-xxxl);
+  color: white;
+  text-shadow: none;
+}
+
+/*
+  * Custom scrollbar
+*/
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 10px 10px #cc8800;
+  border: solid 3px transparent;
+  border-top: solid 10px transparent;
+  border-bottom: solid 10px transparent;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  box-shadow: inset 0 0 10px 10px #ab7200;
+  border: solid 3px transparent;
+  border-top: solid 10px transparent;
+  border-bottom: solid 10px transparent;
+}
+
+/*------------------------------------*\
+  #Elements
+  \*------------------------------------*/
+
+/*
+  Elements: Images
+  ---
+  Default markup for images to make them responsive
+  */
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+/*
+      Elements: typography
+      ---
+      Default markup for typographic elements
+  */
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+h1 {
+  /* font-size: 36px; */
+  font-size: 2.4rem;
+  line-height: calc(var(--global-baseline) * 10);
+  margin: 0 0 var(--global-whitespace-md);
+}
+
+h2 {
+  /* font-size: 28px; */
+  /* font-size: 1.8666666667rem; */
+  font-size: calc(28rem / var(--global-root-font-size));
+  font-weight: normal;
+  margin: 0 0 var(--global-whitespace-lg);
+}
+
+h3 {
+  /* font-size: 18px; */
+  font-size: 1.2rem;
+  line-height: calc(var(--global-baseline) * 6);
+  margin: 0 0 var(--global-whitespace-md);
+}
+
+h4,
+h5,
+h6 {
+  /* font-size: 15px; */
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: calc(var(--global-baseline) * 5);
+  margin: 0 0 var(--global-whitespace-md);
+}
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+  margin: 0 0 var(--global-whitespace-md);
+}
+
+ul,
+ol {
+  padding-left: 24px;
+}
+
+li ul,
+li ol {
+  margin-bottom: 0;
+}
+
+blockquote {
+  font-style: normal;
+  font-size: 23px;
+  line-height: calc(var(--global-baseline) * 5);
+  margin: 0 0 var(--global-whitespace-md);
+}
+
+blockquote * {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+figcaption {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 8px;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: LightGrey;
+  margin: 0 0 var(--global-whitespace-md);
+}
+
+a {
+  transition: all var(--global-transition-alpha);
+  color: var(--global-color-beta);
+  outline-color: var(--global-color-beta);
+  outline-width: medium;
+  outline-offset: 2px;
+  text-decoration: none;
+}
+
+a:visited,
+a:active {
+  color: var(--global-color-beta);
+}
+
+a:hover,
+a:focus {
+  color: var(--global-color-alpha);
+}
+
+label,
+input {
+  display: block;
+}
+
+select {
+  width: 100%;
+}
+
+input::placeholder {
+  color: var(--global-color-neutral-light);
+  opacity: 0.7;
+}
+
+/*------------------------------------*\
+  #OBJECTS
+  \*------------------------------------*/
+
+/*
+      Objects: Row
+      ---
+      Creates a horizontal row that stretches the viewport and adds padding around children
+  */
+
+.o-row {
+  position: relative;
+  padding: var(--global-whitespace-md) 0 var(--global-baseline);
+}
+
+/*
+      Objects: Container
+      ---
+      Creates a horizontal container that sets de global max-width
+  */
+
+.o-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 20em;
+  width: 65%;
+  text-align: center;
+}
+
+@media (min-width: 767px) {
+  .o-container {
+    max-width: 25em;
+  }
+}
+
+/*
+      Objects: List
+      ---
+      Small reusable object to remove default list styling from lists
+  */
+
+.o-list {
+  list-style: none;
+  padding: 0;
+}
+
+/*
+      Object: Button reset
+      ---
+      Small button reset object
+  */
+
+.o-button-reset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+}
+
+/*
+      Object: Hide accessible
+      ---
+      Accessibly hide any element
+  */
+
+.o-hide-accessible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/*------------------------------------*\
+  #COMPONENTS
+  \*------------------------------------*/
+
+/*
+      Component: Button
+      ---
+      Class to put on form buttons or
+  */
+
+.c-button {
+  font-family: 'snesitalic';
+  margin-top: 24px;
+  font-size: 32px;
+  margin-left: 10px;
+  border-radius: var(--button-borderRadius, var(--global-borderRadius));
+  border: 1px solid var(--global-color-alpha);
+  background-color: var(--global-color-dark-l);
+  color: #fff;
+  padding: 12px var(--global-whitespace-md);
+  line-height: calc(var(--global-baseline) * 3);
+  width: 200px;
+  outline: none;
+  transition: all var(--global-transitionDuration-alpha)
+    var(--global-transitionEasing-out);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.c-button:hover {
+  border-color: #03ffff;
+}
+
+.c-button:active {
+  border-color: #46ff03;
+}
+
+.c-button:disabled {
+  background-color: white;
+  pointer-events: none;
+  color: grey;
+  box-shadow: none;
+  padding: 11px var(--global-whitespace-md);
+  margin-top: 25px;
+}
+
+.c-button-alt {
+  background-color: var(--global-color-alpha);
+  color: black;
+  width: fit-content;
+  justify-content: flex-end;
+}
+
+.c-button-contained {
+  margin: 0 0 0 0;
+  width: 100px;
+  height: 49px;
+  background-color: var(--global-color-alpha);
+  color: black;
+}
+
+.c-text-contained {
+  width: 94px;
+  font-family: 'snesitalic';
+  font-size: 37px;
+  margin-top: 13px;
+}
+
+.c-extButtonHolder {
+  height: 50px;
+  width: 188px;
+  display: flex;
+  margin: auto;
+  line-height: calc(var(--global-baseline) * 3);
+  border-radius: var(--button-borderRadius, var(--global-borderRadius));
+  border: 1px solid var(--global-color-alpha);
+}
+
+.c-stop-button {
+  margin-top: 21px;
+  display: none;
+}
+
+/*
+      Component: Title
+      ---
+      Website main Title
+  */
+
+.c-title {
+  font-family: 'snesitalic';
+  color: white;
+  text-align: center;
+  margin-top: 30px;
+  min-width: fit-content;
+}
+
+@media (min-width: 767px) {
+  .c-title {
+    margin-top: 70px;
+  }
+  .u-margin-bot-lg {
+    margin-bottom: 60px;
+  }
+}
+
+.c-title-top {
+  font-size: 72px;
+  line-height: 100px;
+}
+
+.c-title-bottom {
+  font-size: 128px;
+  line-height: 20px;
+}
+
+.c-title--left {
+  text-align: start !important;
+}
+
+.c-title--alt {
+  font-size: 62px;
+  margin-top: 40px;
+  color: var(--global-color-alpha);
+  letter-spacing: 3px;
+  margin-bottom: 0px;
+}
+
+.c-remaining {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.c-nextLevel {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 100px;
+}
+
+/*
+      Component: Forms
+      ---
+      Everything form related here
+  */
+
+.c-form {
+}
+
+.c-form-field {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/*
+    Component: Forms
+    ---
+    Everything form related here
+*/
+
+.c-gradient-banner {
+  min-width: 100vh;
+  height: 300px;
+  background: rgb(48, 48, 48);
+  background: radial-gradient(
+    circle,
+    rgba(48, 48, 48, 1) 0%,
+    rgba(26, 26, 26, 1) 100%,
+    rgba(26, 26, 26, 1) 100%,
+    rgba(48, 48, 48, 1) 100%
+  );
+}
+/*
+      Component: App
+      ---
+      Global app component
+  */
+
+.c-header {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*
+      Component: App
+      ---
+      Global app component
+  */
+
+.c-app {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+/*
+      Component: Footer
+      ---
+      Global footer component
+  */
+
+.c-footer {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  margin: 0;
+  overflow-x: hidden;
+  max-height: 100px;
+}
+
+.c-footer-wideimg {
+  display: none;
+}
+
+@media (min-width: 767px) {
+  .c-footer-smallimg {
+    display: none;
+  }
+  .c-footer-wideimg {
+    display: block !important;
+  }
+}
+
+/*
+    Component: Custom Select
+    ---
+    Custom select dropdown
+*/
+
+.c-custom-select {
+  display: block;
+  position: relative;
+  width: 275px;
+  margin-left: 20px;
+}
+
+.c-custom-select__symbol {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  pointer-events: none;
+  fill: var(--global-color-neutral-x-light);
+}
+
+@media (min-width: 767px) {
+  .c-custom-select {
+    width: 205px;
+  }
+}
+
+/*
+      Component: Icon
+      ---
+      Global icon component
+  */
+
+.c-icon {
+  margin: 0;
+}
+
+.c-icon--input {
+  margin-left: auto;
+  margin-right: -20px;
+}
+
+/*
+      Component: Icon
+      ---
+      Global icon component
+  */
+
+.c-leaderboard {
+  width: 100%;
+  border-radius: var(--input-borderRadius, var(--global-borderRadius));
+  border: var(--input-borderWidth, var(--global-borderWidth)) solid
+    var(--input-borderColor, var(--global-input-borderColor));
+  background-color: var(
+    --input-backgroundColor,
+    var(--global-input-backgroundColor)
+  );
+  font-size: 16px;
+  line-height: calc(var(--global-baseline) * 3);
+  padding: 12px;
+  outline: none;
+  transition: var(--input-transition);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  overflow-y: scroll;
+  height: 320px;
+}
+
+/*
+      Component: Menu
+      ---
+      Global menu component
+  */
+
+.c-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+      Component: Input
+      ---
+      Class to put on all input="text" like form inputs
+  */
+
+.c-input {
+  width: 100%;
+  --input-transition: all var(--global-transitionDuration-alpha)
+    var(--global-transitionEasing-out);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: var(--input-borderRadius, var(--global-borderRadius));
+  border: var(--input-borderWidth, var(--global-borderWidth)) solid
+    var(--input-borderColor, var(--global-input-borderColor));
+  background-color: var(
+    --input-backgroundColor,
+    var(--global-input-backgroundColor)
+  );
+  color: var(--global-input-color);
+  font-family: inherit;
+  font-size: 16px;
+  line-height: calc(var(--global-baseline) * 3);
+  padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth))
+    var(--global-whitespace-md);
+  padding-left: 16px;
+  outline: none;
+  transition: var(--input-transition);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.c-input:hover {
+  border-color: var(
+    --input-hover-borderColor,
+    var(--global-input-hover-borderColor)
+  );
+}
+
+.c-input:focus,
+.c-input:active {
+  border-color: var(--global-color-alpha-l);
+  box-shadow: var(--global-input-focus-boxShadowSpread)
+    var(--input-focus-boxShadowColor, var(--global-input-focus-boxShadowColor));
+}
+
+.c-error-message {
+  font-size: 14px;
+  opacity: 70%;
+  font-weight: 600;
+  color: var(--global-color-error);
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.c-custom-select__input {
+  padding-left: 25px;
+}
+
+/*
+      Component: Label
+      ---
+      Class to put on all form labels
+*/
+
+.c-label {
+  font-family: 'snesitalic';
+  font-size: 32px;
+  text-align: start;
+}
+
+.c-label-error {
+  display: flex;
+  align-self: flex-start;
+  color: var(--global-color-error);
+}
+
+/*
+      Component: Level
+*/
+
+.c-level {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'snesitalic';
+  font-size: 42px;
+  background-color: #1a1a1a;
+  line-height: 16px;
+  padding: 24px;
+  width: 8em;
+  background: linear-gradient(
+    to right,
+    rgba(26, 26, 26, 0) 0%,
+    rgba(26, 26, 26, 1) 40%,
+    rgba(26, 26, 26, 1) 60%,
+    rgba(26, 26, 26, 0) 100%
+  );
+}
+
+/*
+      Component: Table
+*/
+
+.c-table {
+  font-size: 16px;
+  width: 100%;
+}
+
+.c-table tr {
+  line-height: 44px;
+}
+
+/*
+      Component: Timer
+*/
+
+.c-timer {
+  width: 100%;
+  position: relative;
+}
+
+.c-timer-background {
+  background: #262525;
+  width: 248px;
+  height: 248px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.c-timer-text {
+  font-family: protipo, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 32px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rotate-timer {
+  animation: rotation 60s infinite linear;
+}
+
+.disable-timer {
+  pointer-events: none;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+/*------------------------------------*\
+  #States
+  \*------------------------------------*/
+
+.has-error {
+  --label-color: var(--global-color-error);
+  --input-borderColor: var(--global-input-error-borderColor);
+  --input-hover-borderColor: var(--global-input-error-borderColor);
+  --input-focus-borderColor: var(--global-input-error-borderColor);
+  --input-focus-boxShadowColor: var(--global-input-error-boxShadowColor);
+}
+
+/*------------------------------------*\
+  #UTILITIES
+  \*------------------------------------*/
+
+.u-whitebg {
+  background-color: white;
+}
+
+/*
+      Utilities: color
+      ---
+      Utility classes to put specific colors onto elements
+  */
+
+.u-color-neutral {
+  color: var(--global-color-neutral);
+}
+
+.u-color-neutral-dark {
+  color: var(--global-color-neutral-dark);
+}
+
+/*
+      Utilities: spacing
+      ---
+      Utility classes to put specific margins and paddings onto elements
+  */
+
+.u-pt-clear {
+  padding-top: 0 !important;
+}
+
+.u-mb-clear {
+  margin-bottom: 0 !important;
+}
+
+.u-mb-xxs {
+  margin-bottom: var(--global-whitespace-xxs) !important;
+}
+
+.u-mb-xs {
+  margin-bottom: var(--global-whitespace-xs) !important;
+}
+
+.u-mb-sm {
+  margin-bottom: var(--global-whitespace-sm) !important;
+}
+
+.u-mb-md {
+  margin-bottom: var(--global-whitespace-md) !important;
+}
+
+.u-mb-lg {
+  margin-bottom: var(--global-whitespace-lg) !important;
+}
+
+.u-mb-xl {
+  margin-bottom: 60px !important;
+}
+
+/*
+      Utilities: max-width
+      ---
+      Utility classes to put specific max widths onto elements
+  */
+
+.u-max-width-xs {
+  max-width: 27em !important;
+}
+
+.u-max-width-sm {
+  max-width: 39em !important;
+}
+
+.u-max-width-md {
+  max-width: 50em !important;
+}
+
+.u-max-width-lg {
+  max-width: 63.5em !important;
+}
+
+.u-max-width-none {
+  max-width: none !important;
+}
+
+/*
+      Utilities: align
+      ---
+      Utility classes align text or components
+  */
+
+.u-align-text-center {
+  text-align: center;
+}
+
+.u-align-center {
+  margin: 0 auto;
+}
+
+.u-offset-left {
+  margin-left: 32px;
+}
+
+.u-offset-left-md {
+  margin-left: 56px;
+}
+
+.u-offset-right {
+  margin-right: 16px;
+}
+
+.u-margin-bot-xsm {
+  margin-bottom: 6px;
+}
+
+.u-margin-bot-sm {
+  margin-bottom: 12px;
+}
+
+.u-margin-bot-md {
+  margin-bottom: 40px;
+}
+
+.u-margin-bot-lg {
+  margin-bottom: 30px;
+}
+
+.u-margin-top-sm {
+  margin-top: 12px;
+}
+
+.u-margin-top-md {
+  margin-top: 20px;
+}
+
+.u-padding-right-lg {
+  padding-right: 60px;
+}
+
+@media (min-width: 767px) {
+  .u-margin-bot-lg {
+    margin-bottom: 60px;
+  }
+}
+
+/*
+      Utilities: text
+      Utility classes to create smaller or bigger test
+  */
+
+.u-text-xs {
+  font-size: calc(11rem / var(--global-root-font-size));
+}
+
+.u-text-sm {
+  font-size: calc(13rem / var(--global-root-font-size));
+  line-height: calc(var(--global-baseline) * 4);
+}
+
+/*
+      Utilities: span
+      Utility classes to span grid items across the x and y axis
+  */
+
+/* x: horizontal */
+
+@media (min-width: 62em) {
+  .u-x-span-3-bp3 {
+    grid-column: span 3;
+  }
+  .u-x-span-4-bp3 {
+    grid-column: span 4;
+  }
+  .u-x-span-5-bp3 {
+    grid-column: span 5;
+  }
+  .u-x-span-6-bp3 {
+    grid-column: span 6;
+  }
+  .u-x-span-7-bp3 {
+    grid-column: span 7;
+  }
+  .u-x-span-8-bp3 {
+    grid-column: span 8;
+  }
+  .u-x-span-9-bp3 {
+    grid-column: span 9;
+  }
+}
+
+/* y: vertical */
+
+@media (min-width: 62em) {
+  .u-y-span-2-bp3 {
+    grid-row: span 2;
+  }
+}
+
+/*------------------------------------*\
+  #MEDIA
+  \*------------------------------------*/
+
+/*
+      Media Queries
+      ---
+      EXAMPLE Media Queries for Responsive Design.
+      These examples override the primary ('mobile first') styles.
+      USE THEM INLINE!
+  */
+
+/* Extra small devices (portrait phones, less than 576px)
+  No media query since this is the default in mobile first design
+  */
+
+/* Small devices (landscape phones, 576px and up)
+  @media (min-width: 576px) {}
+  */
+
+@media screen and (min-width: 32em) {
+}
+
+@media screen and (min-width: 60em) {
+}
+
+/* Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {}
+  */
+
+/* Large devices (landscape tablets, desktops, 62em and up)
+  @media (min-width: 62em) {}
+  */
+
+/* Extra large devices (large desktops, 1200px and up)
+  @media (min-width: 1200px) {}
+  */
+
+/*
+      Print styles.
+      ---
+      Inlined to avoid the additional HTTP request:
+      http://www.phpied.com/delay-loading-your-print-css/
+  */
+
+@media print {
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster:
+          http://www.sanbeiji.com/archives/953 */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: ' (' attr(href) ')';
+  }
+  abbr[title]:after {
+    content: ' (' attr(title) ')';
+  }
+  /*
+      * Don't show links that are fragment identifiers,
+      * or use the `javascript:` pseudo protocol
+      */
+  a[href^='#']:after,
+  a[href^='javascript:']:after {
+    content: '';
+  }
+  pre {
+    white-space: pre-wrap !important;
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  /*
+      * Printing Tables:
+      * http://css-discuss.incutio.com/wiki/Printing_Tables
+      */
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
